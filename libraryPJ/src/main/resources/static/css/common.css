@@ -1,0 +1,93 @@
+body {
+	font-family: 'Meiryo UI';
+	max-width: 1980px;
+}
+
+th, td {
+	width: 100px;
+}
+
+th{
+	position: sticky;
+	top: 0;
+	left: 0;
+	background-color: #007bff;
+	color: #ffffff;
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
+}
+
+td {
+	line-height: 2.5em;
+}
+
+.header-img {
+	width: 100%;
+}
+
+.main-menu {
+	font-weight: bold;
+}
+
+.page-title {
+	font-weight: bold;
+}
+
+.search-label {
+	width: 140px;
+	padding: 7px 15px;
+}
+
+.list-container {
+	max-width: 1800px;
+}
+
+.book-title {
+	width: 100%;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.table{
+	table-layout: fixed;
+}
+
+.table-scrollbar {
+	position: relative;
+	height: 380px;
+	overflow: auto;
+}
+.table-wrapper-scroll-y {
+	display: block;
+}
+
+.table td, .table th {
+	border-top: 0px;
+	vertical-align: middle;
+	Overflow: hidden;
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+}
+
+.search-button {
+	height: 38px !important;
+}
+
+.checkbox-size-20 {
+    width: 20px;
+    height: 20px;
+}
+
+
+.footer {
+    margin-bottom: 0;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}
+
+.pagination-active-opacity {
+	opacity: .99 !important;
+}

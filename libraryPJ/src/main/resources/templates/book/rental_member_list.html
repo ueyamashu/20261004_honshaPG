@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>貸出会員一覧</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+	<script th:src="@{/js/tsrenrmt10.js}"></script>
+	<script th:src="@{/js/pagination.js}"></script>
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5 list-container">
+		<h2 class="text-center page-title">貸出会員一覧</h2>
+		<div th:object="${tsrenrmtDto}">
+			<div class="my-4">
+				<p class="h5 font-weight-bold">検索条件</p>
+				<div class="mb-3 row">
+					<label for="memberId" class="search-label col-form-label">会員ID</label>
+					<div class="col-sm-4">
+						<input type="text" th:field="*{memberId}" class="form-control" id="memberId">
+						<span th:text="${validationMemberIdError}" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<label for="name" class="search-label col-form-label">名前</label>
+					<div class="col-sm-4">
+						<input type="text" th:field="*{name}" class="form-control" id="name">
+						<span th:text="${validationNameError}" class="text-danger"></span>
+					</div>
+					<button type="button" class="btn btn-outline-secondary search-button"
+						th:onclick="|rentalMemberListFormSubmit('memberSearch')|">検索</button>
+				</div>
+				<p th:if="${paramError != null}" class="text-center text-danger m-5 h4">
+					<strong th:text="${paramError}"></strong>
+				</p>
+				<p th:if="${error != null}" class="text-center text-danger m-5 h4">
+					<strong th:text="${error}"></strong>
+				</p>
+				<div class="text-center">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>会員ID</th>
+								<th>名前</th>
+								<th>会員選択</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="member : ${memberList}">
+								<td th:text="${member.memberId}" th:title="${member.memberId}"></td>
+								<td th:text="${member.name}" th:title="${member.name}"></td>
+								<td><input type="radio" th:field="*{memberId}" th:value="${member.memberId}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="row">
+					<div class="col-sm my-4"></div>
+					<div class="col-sm my-4" th:insert="common/pagination">
+					</div>
+					<div class="col-sm text-right my-4">
+						<button th:if="!${#lists.isEmpty(memberList)}" type="button" class="btn btn-outline-primary"
+							th:onclick="|rentalMemberListFormSubmit('bookSearch')|">資料情報検索</button>
+						<a th:href="@{/init}" class="btn btn-outline-secondary">戻る</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>

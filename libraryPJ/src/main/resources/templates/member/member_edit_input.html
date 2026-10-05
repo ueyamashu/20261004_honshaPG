@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>会員情報更新</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5">
+		<h2 class="text-center page-title">会員情報更新</h2>
+		<form th:action="@{/TSMEMMIC30/init}" th:object="${tsmemmic20dto}" method="post" class="m-5">
+			<input type="hidden" name="memberId" th:value="*{memberId}">
+			<span class="table-wrapper-scroll-y table-scrollbar"
+				style="display: block; height: 540px; overflow-x: hidden;">
+				<div class="mb-3 row justify-content-center">
+					<label for="membership" class="col-sm-2 col-form-label">会員区分</label>
+					<div class="col-sm-6">
+						<div class="col-sm-6 py-2">
+							<input type="radio" name="memberKbn" th:field="*{memberKbn}" value="0"
+								th:checked="*{memberKbn == '0'}">一般
+							<input type="radio" name="memberKbn" th:field="*{memberKbn}" value="1"
+								th:checked="*{memberKbn == '1'}">職員
+							<p>
+								<span th:text="${validationMemberClassError}" class="text-danger"></span>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="name" class="col-sm-2 col-form-label">名前</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{memberName}" class="form-control" name="memberName"
+							placeholder="（例）新宿太郎" th:value="*{memberName}">
+						<span th:text="${validationMemberNameError}" class="text-danger"></span>
+						<p class="mt-2 mb-0">※苗字と名前の間に空白を入れないでください</p>
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="birthday" class="col-sm-2 col-form-label">生年月日</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{birthDate}" class="form-control" name="birthDate"
+							placeholder="（例）yyyy/mm/dd" th:value="*{birthDate}">
+						<span th:text="${validationBirthdayError}" class="text-danger"></span>
+						<p class="mt-2 mb-0">※yyyy/mm/dd形式で入力してください</p>
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="post" class="col-sm-2 col-form-label">郵便番号</label>
+					<div class="col-sm-6">
+						<div class="input-group">
+							<input type="text" th:field="*{postNo1}" aria-label="First post" class="form-control"
+								maxlength="3" name="postNo1" th:value="*{postNo1}">
+							<p class="ml-2 mr-2 mt-1">-</p>
+							<input type="text" th:field="*{postNo2}" aria-label="Last post" class="form-control"
+								maxlength="4" name="postNo2" th:value="*{postNo2}">
+						</div>
+						<span th:text="${validationPostError}" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="address" class="col-sm-2 col-form-label">住所</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" th:field="*{address}" name="address"
+							th:value="*{address}">
+						<span th:text="${validationAddressError}" class="text-danger"></span>
+						<p class="mt-2 mb-0">※都道府県から入力してください</p>
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="tel" class="col-sm-2 col-form-label">電話番号</label>
+					<div class="col-sm-6">
+						<div class="input-group">
+							<input type="text" aria-label="First tel" th:field="*{phoneNo1}" class="form-control"
+								name="phoneNo1" th:value="*{phoneNo1}">
+							<p class="ml-2 mr-2 mt-1">-</p>
+							<input type="text" aria-label="Middle tel" th:field="*{phoneNo2}" class="form-control"
+								name="phoneNo2" th:value="*{phoneNo2}">
+							<p class="ml-2 mr-2 mt-1">-</p>
+							<input type="text" aria-label="Last tel" th:field="*{phoneNo3}" class="form-control"
+								name="phoneNo3" th:value="*{phoneNo3}">
+						</div>
+						<span th:text="${validationTellNumberError}" class="text-danger"></span>
+						<p class="mt-2 mb-0">※電話番号は携帯電話番号のみ</p>
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="email" class="col-sm-2 col-form-label">メールアドレス</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{mailAddress}" class="form-control" name="mailAddress"
+							th:value="*{mailAddress}">
+						<span th:text="${validationEmailError}" class="text-danger"></span>
+						<input type="hidden" name="mailAddressMoto" th:value="*{mailAddressMoto}">
+					</div>
+				</div>
+			</span>
+			<div class="mb-3 row justify-content-center">
+				<input type="submit" class="btn btn-outline-primary" value="確認">　
+				<a th:href="@{/TSMEMMTB10/init}" class="btn btn-outline-secondary">戻る</a>
+			</div>
+		</form>
+	</div>
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>

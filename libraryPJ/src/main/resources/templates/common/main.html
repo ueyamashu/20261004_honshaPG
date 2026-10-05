@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>メイン</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-4">
+				<p class="h5 mb-3 text-center text-primary main-menu">会員管理</p>
+				<ul class="list-group">
+					<li class="list-group-item"><a th:href="@{/member/list}" class="text-dark stretched-link">会員一覧</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<p class="h5 mb-3 text-center text-primary main-menu">資料管理</p>
+				<ul class="list-group">
+					<li class="list-group-item"><a th:href="@{/book/list}" class="text-dark stretched-link">資料一覧</a>
+					</li>
+					<li class="list-group-item"><a th:href="@{/book/rental/member/list}"
+							class="text-dark stretched-link">貸出</a></li>
+					<li class="list-group-item"><a th:href="@{/book/return/list}"
+							class="text-dark stretched-link">返却</a></li>
+					<li class="list-group-item"><a th:href="@{/book/return/history/list}"
+							class="text-dark stretched-link">返却履歴</a></li>
+					<li class="list-group-item"><a th:href="@{/book/arrears/list}"
+							class="text-dark stretched-link">延滞確認</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<p class="h5 mb-3 text-center text-primary main-menu">マイページ</p>
+				<ul class="list-group">
+					<li class="list-group-item"><a th:href="@{/logout}" class="text-dark stretched-link">ログアウト</a></li>
+					<li class="list-group-item"><a th:href="@{/member/password}"
+							class="text-dark stretched-link">パスワード変更</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>

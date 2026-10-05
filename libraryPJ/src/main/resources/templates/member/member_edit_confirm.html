@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>会員情報更新確認</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5">
+		<h2 class="text-center page-title">会員情報更新確認</h2>
+		<p class="text-center text-danger m-5 h4">
+			<span th:text="${error}" class="text-danger"></span>
+		</p>
+		<form action="#" th:action="@{/TSMEMMIC30/complete}" method="post" class="m-5" th:object="${tsmemmic20dto}">
+			<input type="hidden" name="memberId" th:value="*{memberId}">
+			<div class="mb-3 row justify-content-center">
+				<label for="membership" class="col-sm-2 col-form-label">会員区分</label>
+				<div class="col-sm-6 py-2">
+					<th:block th:if="*{memberKbn == '0'}">
+						一般
+					</th:block>
+					<th:block th:if="*{memberKbn == '1'}">
+						職員
+					</th:block>
+					<input type="hidden" name="memberKbn" th:value="*{memberKbn}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="name" class="col-sm-2 col-form-label">名前</label>
+				<div class="col-sm-6 py-2">
+					[[*{memberName}]]
+					<input type="hidden" name="memberName" th:value="*{memberName}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="birthday" class="col-sm-2 col-form-label">生年月日</label>
+				<div class="col-sm-6 py-2">
+					[[*{birthDate}]]
+					<input type="hidden" name="birthDate" th:value="*{birthDate}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="post" class="col-sm-2 col-form-label">郵便番号</label>
+				<div class="col-sm-6 py-2">
+					[[*{postNo}]]
+					<input type="hidden" name="postNo" th:value="*{postNo}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="address" class="col-sm-2 col-form-label">住所</label>
+				<div class="col-sm-6 py-2">
+					[[*{address}]]
+					<input type="hidden" name="address" th:value="*{address}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="tel" class="col-sm-2 col-form-label">電話番号</label>
+				<div class="col-sm-6 py-2">
+					[[*{phoneNo}]]
+					<input type="hidden" name="phoneNo" th:value="*{phoneNo}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="email" class="col-sm-2 col-form-label">メールアドレス</label>
+				<div class="col-sm-6 py-2">
+					[[*{mailAddress}]]
+					<input type="hidden" name="mailAddress" th:value="*{mailAddress}">
+				</div>
+			</div>
+			<div class="text-center my-5">
+				<th:block th:if="${error == null}">
+				<input type="submit" class="btn btn-outline-primary" value="更新">
+				</th:block>
+				<a th:href="@{/TSMEMMIC20/init/{id}(id=*{memberId})}" class="btn btn-outline-secondary">キャンセル</a>
+			</div>
+		</form>
+	</div>
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>

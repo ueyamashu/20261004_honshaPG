@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>資料情報廃棄確認</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5">
+		<h2 class="text-center page-title">資料情報廃棄確認</h2>
+		<form action="#" th:action="@{/TSBKSBID30/complete}" method="post" th:object="${inDto}" class="m-5">
+			<div class="mb-3 row justify-content-center">
+				<label for="bookId" class="col-sm-2 col-form-label">資料ID</label>
+				<div class="col-sm-6 py-2">
+					[[*{bookId}]]
+					<input type="hidden" name="bookId" th:value="*{bookId}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="releaseDate" class="col-sm-2 col-form-label">廃棄年月日</label>
+				<div class="col-sm-6 py-2">
+					[[*{disposalDate}]]
+					<input type="hidden" name="disposalDate" th:value="*{disposalDate}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="isbn" class="col-sm-2 col-form-label">備考</label>
+				<div class="col-sm-6 py-2">
+					[[*{disposalNote}]]
+					<input type="hidden" name="disposalNote" th:value="*{disposalNote}">
+				</div>
+			</div>
+			<div class="text-center my-5">
+				<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+					data-bs-target="#confirmDiscard">廃棄 </button>
+				<a onclick="history.back()" class="btn btn-outline-secondary">キャンセル</a>
+			</div>
+			<!-- Modal -->
+			<div class="modal" id="confirmDiscard" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">廃棄確認</h4>
+						</div>
+						<div class="modal-body">
+							<p>廃棄した資料は復元できません。</p>
+							<p>本当に廃棄しますか？</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="submit" class="btn btn-danger">廃棄する</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>

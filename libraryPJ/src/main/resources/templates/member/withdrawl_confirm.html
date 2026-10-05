@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>会員退会確認</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5">
+		<h2 class="text-center page-title">会員退会確認</h2>
+		<p class="text-center text-danger m-5 h4">
+			<strong><span th:text="${borrowedBookMessage}"></span></strong>
+		</p>
+		<form action="#" th:action="@{/TSMEMMID30/complete}" method="post" class="m-5" th:object="${TSMEMMIC20DTOForm}">
+			<input type="hidden" name="memberId" th:value="*{memberId}">
+			<div class="mb-3 row justify-content-center">
+				<label for="membership" class="col-sm-2 col-form-label">会員区分</label>
+				<div class="col-sm-6 py-2">
+					<th:block th:if="*{memberKbn == '0'}">
+						一般
+					</th:block>
+					<th:block th:if="*{memberKbn == '1'}">
+						職員
+					</th:block>
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="name" class="col-sm-2 col-form-label">名前</label>
+				<div class="col-sm-6 py-2">
+					[[*{memberName}]]
+					<input type="hidden" name="memberName" th:value="*{memberName}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="birthDate" class="col-sm-2 col-form-label">生年月日</label>
+				<div class="col-sm-6 py-2">
+					[[*{birthDate}]]
+					<input type="hidden" name="birthDate" th:value="*{birthDate}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="postNo" class="col-sm-2 col-form-label">郵便番号</label>
+				<div class="col-sm-6 py-2">
+					[[*{postNo}]]
+					<input type="hidden" name="postNo" th:value="*{postNo}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="address" class="col-sm-2 col-form-label">住所</label>
+				<div class="col-sm-6 py-2">
+					[[*{address}]]
+					<input type="hidden" name="address" th:value="*{address}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="phoneNo" class="col-sm-2 col-form-label">電話番号</label>
+				<div class="col-sm-6 py-2">
+					[[*{phoneNo}]]
+					<input type="hidden" name="phoneNo" th:value="*{phoneNo}">
+				</div>
+			</div>
+			<div class="mb-3 row justify-content-center">
+				<label for="mailAddress" class="col-sm-2 col-form-label">メールアドレス</label>
+				<div class="col-sm-6 py-2">
+					[[*{mailAddress}]]
+				</div>
+			</div>
+			<div class="text-center my-5">
+				<a th:unless="${borrowedBookMessage}">
+					<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+						data-bs-target="#confirmWithdraw">退会 </button>
+				</a>
+				<a th:href="@{/member/list}" class="btn btn-outline-secondary">キャンセル</a>
+			</div>
+			<!-- Modal -->
+			<div class="modal" id="confirmWithdraw" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">退会確認</h4>
+						</div>
+						<div class="modal-body">
+							<p>退会すると会員情報が全て削除されます。</p>
+							<p>本当に退会しますか？</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+							<button type="submit" class="btn btn-danger">退会する</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>

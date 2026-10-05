@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>会員退会完了</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">
+			<img th:src="@{/image/header.jpg}" class="header-img">
+		</a>
+	</header>
+	<div class="container my-5" th:object="${TSMEMMIC20DTOForm}">
+		<form action="#" th:action="@{/TSMEMMID40/returnBtn}" method="post" class="m-5"
+			th:object="${TSMEMMIC20DTOForm}">
+			<h2 class="text-center page-title">会員退会完了</h2>
+			<div class="m-5">
+				<div class="mb-3 row justify-content-center">
+					<label for="withdrawlDate" class="col-sm-2 col-form-label">退会年月日</label>
+					<div class="col-sm-6 py-2">
+						[[*{withdrawalDate}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="memberId" class="col-sm-2 col-form-label">ID</label>
+					<div class="col-sm-6 py-2">
+						[[*{memberId}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="membership" class="col-sm-2 col-form-label">会員区分</label>
+					<div class="col-sm-6 py-2">
+						[[*{memberKbn}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="name" class="col-sm-2 col-form-label">名前</label>
+					<div class="col-sm-6 py-2">
+						[[*{memberName}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="birthday" class="col-sm-2 col-form-label">生年月日</label>
+					<div class="col-sm-6 py-2">
+						[[*{birthDate}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="post" class="col-sm-2 col-form-label">郵便番号</label>
+					<div class="col-sm-6 py-2">
+						[[*{postNo}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="address" class="col-sm-2 col-form-label">住所</label>
+					<div class="col-sm-6 py-2">
+						[[*{address}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="tel" class="col-sm-2 col-form-label">電話番号</label>
+					<div class="col-sm-6 py-2">
+						[[*{phoneNo}]]
+					</div>
+				</div>
+				<div class="mb-3 row justify-content-center">
+					<label for="email" class="col-sm-2 col-form-label">メールアドレス</label>
+					<div class="col-sm-6 py-2">
+						[[*{mailAddress}]]
+					</div>
+				</div>
+
+				<input type="hidden" name="memberId" th:value="*{memberId}">
+				<div class="text-center my-5">
+					<input type="submit" class="btn btn-outline-primary" value="戻る">
+				</div>
+
+			</div>
+		</form>
+	</div>
+	<!-- フッター -->
+	<footer class="footer">
+		<img th:src="@{/image/footer.jpg}">
+	</footer>
+</body>
+
+</html>
