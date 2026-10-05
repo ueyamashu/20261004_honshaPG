@@ -13,7 +13,7 @@ import com.springboot.libraryPJ.ZZ.domain.entity.BookEntity;
  *
  */
 @Transactional(rollbackFor = Exception.class)
-public interface BookRepository extends JpaRepository<BookEntity, Integer> {
+public interface BookRepository extends JpaRepository<BookEntity, String> {
 	/**
 	 * 削除フラグを条件に貸出資料を取得する。
 	 */

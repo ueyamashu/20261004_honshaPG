@@ -13,7 +13,7 @@ import com.springboot.libraryPJ.ZZ.domain.entity.BookLibraryEntity;
  *
  */
 @Transactional(rollbackFor = Exception.class)
-public interface BookLibraryRepository extends JpaRepository<BookLibraryEntity, Long> {
+public interface BookLibraryRepository extends JpaRepository<BookLibraryEntity, Integer> {
 
 	@Query(value = "SELECT library.book_id, library.isbn, book.category, book.title, book.author, book.publisher, book.release_date, library.arrival_date, library.disposal_date, library.disposal_note, book.exclusive_key AS book_exclusive_key, library.exclusive_key AS library_exclusive_key FROM book INNER JOIN library ON library.isbn = book.isbn ORDER BY library.book_id DESC", nativeQuery = true)
 	List<BookLibraryEntity> findBookList();

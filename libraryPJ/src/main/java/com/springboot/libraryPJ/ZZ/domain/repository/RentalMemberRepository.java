@@ -13,7 +13,7 @@ import com.springboot.libraryPJ.ZZ.domain.entity.RentalMemberEntity;
  *
  */
 @Transactional(rollbackFor = Exception.class)
-public interface RentalMemberRepository extends JpaRepository<RentalMemberEntity, Long> {
+public interface RentalMemberRepository extends JpaRepository<RentalMemberEntity, Integer> {
 
 	/*
 	 * 会員テーブル キー：会員ID 取得：名前 蔵書テーブル キー：資料ID 取得：ISBN 資料テーブル キー：ISBN 取得：資料名 貸出テーブル

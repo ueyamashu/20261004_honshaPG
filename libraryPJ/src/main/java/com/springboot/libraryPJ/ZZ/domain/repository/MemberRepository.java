@@ -13,7 +13,7 @@ import com.springboot.libraryPJ.ZZ.domain.entity.MemberEntity;
  *
  */
 @Transactional(rollbackFor = Exception.class)
-public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
+public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
 	List<MemberEntity> findByMemberIdAndPasswordAndDeleteFlag(int memberId, String password, String deleteFlag);
 

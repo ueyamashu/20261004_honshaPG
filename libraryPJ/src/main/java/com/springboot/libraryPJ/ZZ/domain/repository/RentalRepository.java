@@ -13,7 +13,7 @@ import com.springboot.libraryPJ.ZZ.domain.entity.RentalEntity;
  *
  */
 @Transactional(rollbackFor = Exception.class)
-public interface RentalRepository extends JpaRepository<RentalEntity, Long> {
+public interface RentalRepository extends JpaRepository<RentalEntity, Integer> {
 
 	//	 2次開発 ソート順修正
 	@Query(value = "SELECT * FROM rental order by RENTAL_DUE_DATE ASC", nativeQuery = true)
